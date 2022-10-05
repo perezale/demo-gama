@@ -19,6 +19,6 @@ export class CarsController {
 
   @Post()
   create(@Body() createCarDto:CreateCarDto){
-    return "Auto agregado";
+    return this.carsService.create(createCarDto);
   }
 }
