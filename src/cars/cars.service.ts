@@ -1,11 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCarDto } from './dto/create-car.dto';
+import { Car } from './interfaces/car.interface';
 
 @Injectable()
 export class CarsService {
       
     
-    private cars = [
+    private cars : Car[] = [
         {
             "id":1,
             "modelo": "K",
@@ -16,21 +17,21 @@ export class CarsService {
     ];
     
     
-    findAll(){
+    findAll(): Car[] {  
         return this.cars;
         //return 'Hello al mundo de GAMA multimarcas';
     }
 
-    findOne(id: any) {
+    findOne(id:number):Car {
         return this.cars.find(function(car){
             return car.id == id;
         })
     }
 
-    create(createCarDto: CreateCarDto) {
+    create(createCarDto: CreateCarDto):Car {
         let nextId = this.cars[this.cars.length-1].id + 1;
-        let car = {
-            "id": nextId,
+        let car : Car = {
+            id  : nextId,
             ...createCarDto
         };
         this.cars.push(car);
