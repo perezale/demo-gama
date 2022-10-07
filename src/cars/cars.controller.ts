@@ -1,6 +1,8 @@
 import { Body, Controller,Get,Param,Post, Query } from '@nestjs/common';
 import { CarsService } from './cars.service';
 import { CreateCarDto } from './dto/create-car.dto';
+import { QueryCarsDto } from './dto/query-cars.dto';
+import { Car } from './interfaces/car.interface';
 
 @Controller('cars')
 export class CarsController {
@@ -8,8 +10,8 @@ export class CarsController {
   constructor(private readonly carsService: CarsService) {}
 
   @Get()
-  findAll(@Query() query) {    //METODO
-    let modelo = query.modelo;
+  findAll(@Query() query: QueryCarsDto): Car[] {    //METODO
+    let modelo = query.modelo;  
     return this.carsService.findAll(modelo);
   }
   
