@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCarDto } from './dto/create-car.dto';
+import { UpdateCarDto } from './dto/update-car.dto';
 import { Car } from './interfaces/car.interface';
 
 @Injectable()
 export class CarsService {
+    
       
     
     private cars : Car[] = [
@@ -54,4 +56,14 @@ export class CarsService {
         this.cars.push(car);
         return car;
     }
+
+    update(id: number, updateCarDto: UpdateCarDto): Car {
+        const car = this.findOne(id);
+        car.modelo = updateCarDto.modelo;
+        car.año = updateCarDto.año;
+        car.color = updateCarDto.color;
+        car.precio = updateCarDto.precio;
+        return car;
+      }
+
 }

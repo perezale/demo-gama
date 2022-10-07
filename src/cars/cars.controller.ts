@@ -1,7 +1,8 @@
-import { Body, Controller,Get,Param,Post, Query } from '@nestjs/common';
+import { Body, Controller,Get,Param,Post, Put, Query } from '@nestjs/common';
 import { CarsService } from './cars.service';
 import { CreateCarDto } from './dto/create-car.dto';
 import { QueryCarsDto } from './dto/query-cars.dto';
+import { UpdateCarDto } from './dto/update-car.dto';
 import { Car } from './interfaces/car.interface';
 
 @Controller('cars')
@@ -23,5 +24,10 @@ export class CarsController {
   @Post()
   create(@Body() createCarDto:CreateCarDto){
     return this.carsService.create(createCarDto);
+  }
+
+  @Put(':id')
+  update(@Param('id')id: number, @Body() updateCarDto:UpdateCarDto): Car {
+    return this.carsService.update(id, updateCarDto);  
   }
 }
