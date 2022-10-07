@@ -50,10 +50,7 @@ export class CarsService {
 
     create(createCarDto: CreateCarDto):Car {
         let nextId = this.cars[this.cars.length-1].id + 1;
-        let car : Car = {
-            id  : nextId,
-            ...createCarDto
-        };
+        let car : Car = new Car(nextId,createCarDto.modelo,createCarDto.año,createCarDto.color,createCarDto.precio);
         this.cars.push(car);
         return car;
     }
