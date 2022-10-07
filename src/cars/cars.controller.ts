@@ -1,4 +1,4 @@
-import { Body, Controller,Get,Param,Post } from '@nestjs/common';
+import { Body, Controller,Get,Param,Post, Query } from '@nestjs/common';
 import { CarsService } from './cars.service';
 import { CreateCarDto } from './dto/create-car.dto';
 
@@ -8,8 +8,9 @@ export class CarsController {
   constructor(private readonly carsService: CarsService) {}
 
   @Get()
-  findAll() {    //METODO 
-    return this.carsService.findAll();
+  findAll(@Query() query) {    //METODO
+    let modelo = query.modelo;
+    return this.carsService.findAll(modelo);
   }
   
   @Get(':id')  //RECIBO TOKEN CON :

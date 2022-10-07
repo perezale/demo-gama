@@ -9,16 +9,36 @@ export class CarsService {
     private cars : Car[] = [
         {
             "id":1,
-            "modelo": "K",
+            "modelo": "Focus",
             "año": 2015,
             "color":"Negro",
+            "precio":25000.000 
+        },
+        {
+            "id":2,
+            "modelo": "K",
+            "año": 2020,
+            "color":"Rojo",
             "precio":15000.000 
-        }           
+        },
+        {
+            "id":3,
+            "modelo": "Sandero",
+            "año": 2010,
+            "color":"Blanco",
+            "precio":12000.000 
+        }               
     ];
     
     
-    findAll(): Car[] {  
-        return this.cars;
+    findAll(modelo): Car[] {
+        
+        if(!modelo){
+            return this.cars;
+        }
+        return this.cars.filter(function(car){
+            return car.modelo.toLowerCase() == modelo.toLowerCase();
+        });
         //return 'Hello al mundo de GAMA multimarcas';
     }
 
