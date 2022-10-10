@@ -18,8 +18,12 @@ export class BrandsController {
         return this.brandsService.findOne(params.id);
     }
 
-    /*
     @Post()
+    create(@Body() createBrandDto:CreateBrandDto){
+        return this.brandsService.create(createBrandDto);
+    }
+
+    /*@Post()
     create(@Body() createBrandDto:CreateBrandDto): Brand{
         return this.brandsService.create(createBrandDto);
     }*/
