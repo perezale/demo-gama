@@ -6,42 +6,42 @@ import { Brand } from './interfaces/brand.interface';
 export class BrandsService {
     
 
-    private brands = [
+    private brands : Brand [] = [   
         {
-            "id":"1",
+            "id":1,
             "nombre":"Toyota"
         },
         {
-            "id":"2",
+            "id":2,
             "nombre":"Nissan"
         },
         {
-            "id":"3",
+            "id":3,
             "nombre":"Mitsubishi"
         }
     ];
 
 
-    findAll(){
+    findAll(): Brand[] {
         return this.brands; 
     }
 
-    findOne(id: any) {
+    findOne(id: number) : Brand {
         return this.brands.find(function(brand){
             return brand.id == id;
         });
     }
 
-    create(createBrandDto: CreateBrandDto){
+    create(createBrandDto: CreateBrandDto): Brand {
         let nextId = this.brands[this.brands.length-1].id+1;
-        let brand = {
-            "id": nextId,
+        let brand : Brand = {
+            id: nextId,
             ...createBrandDto
-        }     
+        };
         this.brands.push(brand);
         return brand;
     }
-    
+
     /*create(createBrandDto: CreateBrandDto): Brand {        
         let brand : Brand = {
             id: 5,
