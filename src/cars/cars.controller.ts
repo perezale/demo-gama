@@ -12,8 +12,10 @@ export class CarsController {
 
   @Get()
   findAll(@Query() query: QueryCarsDto): Car[] {    //METODO
-    let modelo = query.modelo;  
-    return this.carsService.findAll(modelo);
+    let modelo = query.modelo;
+    let sortBy = query.sortBy;
+    let orderBy = query.orderBy;  
+    return this.carsService.findAll(modelo,sortBy,orderBy);
   }
   
   @Get(':id')  //RECIBO TOKEN CON :

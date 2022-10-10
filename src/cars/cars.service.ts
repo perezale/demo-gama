@@ -33,14 +33,32 @@ export class CarsService {
     ];
     
     
-    findAll(modelo): Car[] {
-        
+    findAll(modelo : string, sortBy : string, orderBy : string): Car[] {     
+        let queryCars = [];   
         if(!modelo){
-            return this.cars;
+            queryCars = this.cars;
         }
-        return this.cars.filter(function(car){
-            return car.modelo.toLowerCase() == modelo.toLowerCase();
-        });
+        else {
+            queryCars = this.cars.filter(function(car){
+                return car.modelo.toLowerCase() == modelo.toLowerCase();
+            });
+        }
+        
+        if(!sortBy){
+            return queryCars;
+        }
+        let orderedCars = queryCars.sort(function(a,b){
+            let campoAOrdenarA = a[sortBy];
+            let campoAOrdenarB = b[sortBy];
+            if (campoAOrdenarA < campoAOrdenarB){
+                return -1;
+            }
+            if (campoAOrdenarA == campoAOrdenarB){
+                return 0;
+            }
+            return 1;
+        })
+        return orderedCars;
         //return 'Hello al mundo de GAMA multimarcas';
     }
 
@@ -64,6 +82,6 @@ export class CarsService {
         car.color = updateCarDto.color;
         car.precio = updateCarDto.precio;
         return car;
-      }
+    }
 
 }
