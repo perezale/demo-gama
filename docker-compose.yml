@@ -1,0 +1,18 @@
+version: '2'
+services:
+  database:
+    image: 'postgres:latest'
+    restart: always
+    volumes:
+      - './postgres_data:/var/lib/postgresql/data'
+    environment:
+      - POSTGRES_DB=my_db
+      - POSTGRES_USER=carlos
+      - POSTGRES_PASSWORD=123456
+    ports:
+      - '5432:5432'
+  
+  adminer:
+    image: 'adminer:latest'
+    ports:
+      - '8080:8080'
