@@ -34,21 +34,8 @@ export class BrandsService {
 
     create(createBrandDto: CreateBrandDto): Brand {
         let nextId = this.brands[this.brands.length-1].id+1;
-        let brand : Brand = {
-            id: nextId,
-            ...createBrandDto
-        };
+        let brand : Brand = new Brand(nextId,createBrandDto.nombre);
         this.brands.push(brand);
         return brand;
     }
-
-    /*create(createBrandDto: CreateBrandDto): Brand {        
-        let brand : Brand = {
-            id: 5,
-            ...createBrandDto
-        }
-        return brand;
-    }*/
-    
-
 }
