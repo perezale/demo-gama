@@ -38,4 +38,10 @@ export class BrandsService {
         this.brands.push(brand);
         return brand;
     }
+
+    update(id: number, updateBrandDto: any): Brand {
+        const brand = this.findOne(id);
+        brand.nombre = updateBrandDto.nombre;
+        return brand;
+    }
 }
