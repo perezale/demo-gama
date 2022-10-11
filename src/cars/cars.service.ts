@@ -1,12 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateCarDto } from './dto/create-car.dto';
 import { UpdateCarDto } from './dto/update-car.dto';
 import { Car } from './interfaces/car.interface';
 
 @Injectable()
 export class CarsService {
-    
-      
+       
     
     private cars : Car[] = [
         {
@@ -84,4 +83,11 @@ export class CarsService {
         return car;
     }
 
+    remove(id: number): void {
+        const car = this.findOne(id);
+        if(!car)
+            throw new HttpException('Not found', HttpStatus.NOT_FOUND);
+        const pos = this.cars.indexOf(car);
+        this.cars.splice(pos,1);
+    }
 }

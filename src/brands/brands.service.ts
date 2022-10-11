@@ -1,10 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateBrandDto } from './dto/create-brand.dto';
 import { Brand } from './interfaces/brand.interface';
 
 @Injectable()
 export class BrandsService {
-    
+        
 
     private brands : Brand [] = [   
         {
@@ -43,5 +43,13 @@ export class BrandsService {
         const brand = this.findOne(id);
         brand.nombre = updateBrandDto.nombre;
         return brand;
+    }
+
+    remove(id: number): void {
+        const brand = this.findOne(id);
+        if(!brand)
+            throw new HttpException('Not found',HttpStatus.NOT_FOUND);
+        const pos = this.brands.indexOf(brand);
+        this.brands.splice(pos,1);
     }
 }
