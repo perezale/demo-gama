@@ -1,11 +1,24 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateBrandDto } from './dto/create-brand.dto';
 import { Brand } from './entities/brand.entity';
 
 @Injectable()
 export class BrandsService {
-        
 
+    constructor(
+        @InjectRepository(Brand)
+        private brandRepor:Repository<Brand>
+    ){
+
+    }
+
+    findAll(){
+        return this.brandRepor.find();
+    }
+        
+/*
     private brands : Brand [] = [   
         {
             "id":1,
@@ -51,5 +64,5 @@ export class BrandsService {
             throw new HttpException('Not found',HttpStatus.NOT_FOUND);
         const pos = this.brands.indexOf(brand);
         this.brands.splice(pos,1);
-    }
+    }*/
 }

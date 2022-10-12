@@ -14,7 +14,7 @@ export class BrandsController {
         return this.brandsService.findAll();
     }
 
-    @Get(':id')
+    /*@Get(':id')
     findOne(@Param()params){
         return this.brandsService.findOne(params.id);
     }
@@ -32,5 +32,5 @@ export class BrandsController {
     @Delete(':id')
     remove(@Param('id')id:number):void{
         return this.brandsService.remove(id);
-    }
+    }*/
 }
