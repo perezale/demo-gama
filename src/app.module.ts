@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { CarsModule } from './cars/cars.module';
 import { BrandsModule } from './brands/brands.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Car } from './cars/interfaces/car.interface';
-import { Brand } from './brands/interfaces/brand.interface';
+import { Car } from './cars/entities/car.entity';
+import { Brand } from './brands/entities/brand.entity';
 
 @Module({
   imports: [
@@ -14,7 +14,7 @@ import { Brand } from './brands/interfaces/brand.interface';
       database: 'my_db',
       username: 'carlos',
       password: '123456',      
-      entities: [Car,Brand],
+      entities: [Car],
       synchronize: true,
     }),    
     CarsModule, BrandsModule],
