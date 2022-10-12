@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
 import { BrandsService } from './brands.service';
 import { CreateBrandDto } from './dto/create-brand.dto';
 import { UpdateBrandDto } from './dto/update-brand.dto';
-import { Brand } from './interfaces/brand.interface';
+import { Brand } from './entities/brand.entity';
 
 @Controller('brands')
 export class BrandsController {
