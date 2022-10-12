@@ -14,7 +14,7 @@ import { Brand } from './brands/entities/brand.entity';
       database: 'my_db',
       username: 'carlos',
       password: '123456',      
-      entities: [Car],
+      entities: [Car,Brand],
       synchronize: true,
     }),    
     CarsModule, BrandsModule],
