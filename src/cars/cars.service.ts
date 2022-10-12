@@ -1,12 +1,24 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateCarDto } from './dto/create-car.dto';
 import { UpdateCarDto } from './dto/update-car.dto';
-import { Car } from './interfaces/car.interface';
+import { Car } from './entities/car.entity';
 
 @Injectable()
 export class CarsService {
-       
     
+    constructor(
+        @InjectRepository(Car)
+        private carRepor:Repository<Car>
+    ){
+         
+    }
+
+    findAll(){
+        return this.carRepor.find();
+    }
+    /*
     private cars : Car[] = [
         {
             "id":1,
@@ -89,5 +101,5 @@ export class CarsService {
             throw new HttpException('Not found', HttpStatus.NOT_FOUND);
         const pos = this.cars.indexOf(car);
         this.cars.splice(pos,1);
-    }
+    }*/
 }

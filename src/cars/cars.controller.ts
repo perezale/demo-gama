@@ -3,13 +3,18 @@ import { CarsService } from './cars.service';
 import { CreateCarDto } from './dto/create-car.dto';
 import { QueryCarsDto } from './dto/query-cars.dto';
 import { UpdateCarDto } from './dto/update-car.dto';
-import { Car } from './interfaces/car.interface';
+import { Car } from './entities/car.entity';
 
 @Controller('cars')
 export class CarsController {
 
   constructor(private readonly carsService: CarsService) {}
 
+  @Get()
+  findAll() {
+    return this.carsService.findAll();
+  }
+  /*
   @Get()
   findAll(@Query() query: QueryCarsDto): Car[] {    //METODO
     let modelo = query.modelo;
@@ -36,5 +41,5 @@ export class CarsController {
   @Delete(':id')
   remove(@Param('id')id:number):void {
     return this.carsService.remove(id);
-  }
+  }*/
 }
