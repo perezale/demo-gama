@@ -14,6 +14,13 @@ export class CarsController {
   findAll() {
     return this.carsService.findAll();
   }
+
+  @Post('')
+  create(@Body() createCarDto:CreateCarDto): Promise<Car> {
+    const newCar = this.carsService.create(createCarDto);
+    return newCar;
+  }
+  
   /*
   @Get()
   findAll(@Query() query: QueryCarsDto): Car[] {    //METODO

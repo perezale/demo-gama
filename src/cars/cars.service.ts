@@ -18,6 +18,11 @@ export class CarsService {
     findAll(){
         return this.carRepor.find();
     }
+
+    create(createCarDto: CreateCarDto):Promise<Car> {
+        return this.carRepor.save(createCarDto)
+    }
+
     /*
     private cars : Car[] = [
         {
