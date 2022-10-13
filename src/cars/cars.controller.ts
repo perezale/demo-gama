@@ -21,10 +21,10 @@ export class CarsController {
     return newCar;
   }
   
-  /*@Get(':id')  //RECIBO TOKEN CON :
-  findOne(@Param() params){
-    return this.carsService.findOne(params.id);
-  } */
+  @Get(':id')
+  findOne(@Param('id') id: number) {
+    return this.carsService.findOne(+id);
+  }
 
   @Delete(':id')
   remove(@Param('id') id: string) {

@@ -17,9 +17,11 @@ export class CarsService {
         return this.carRepor.find();
     }
 
-    /*findOne(id:number) {
-        return this.carRepor.findOne(id);
-    }*/
+    findOne(id: number) {
+        return this.carRepor.findOne({
+            where:{id}
+        });
+    }
 
     create(createCarDto: CreateCarDto):Promise<Car> {
         return this.carRepor.save(createCarDto)

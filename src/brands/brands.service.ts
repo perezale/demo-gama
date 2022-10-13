@@ -6,6 +6,7 @@ import { Brand } from './entities/brand.entity';
 
 @Injectable()
 export class BrandsService {
+    
 
     constructor(
         @InjectRepository(Brand)
@@ -16,6 +17,12 @@ export class BrandsService {
 
     findAll(){
         return this.brandRepor.find();
+    }
+
+    findOne(id: number) {
+        return this.brandRepor.findOne({
+            where:{id}
+        });
     }
 
     create(createBrandDto:CreateBrandDto):Promise<Brand>{
