@@ -14,6 +14,12 @@ export class BrandsController {
         return this.brandsService.findAll();
     }
 
+    @Post('')
+    create(@Body() createBrandDto:CreateBrandDto): Promise<Brand> {
+        const newBrand = this.brandsService.create(createBrandDto);
+        return newBrand;
+    }
+
     /*@Get(':id')
     findOne(@Param()params){
         return this.brandsService.findOne(params.id);

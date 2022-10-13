@@ -17,6 +17,10 @@ export class BrandsService {
     findAll(){
         return this.brandRepor.find();
     }
+
+    create(createBrandDto:CreateBrandDto):Promise<Brand>{
+        return this.brandRepor.save(createBrandDto)    
+    }
         
 /*
     private brands : Brand [] = [   
