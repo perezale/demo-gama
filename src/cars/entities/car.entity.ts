@@ -4,26 +4,26 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 export class Car {
 
     @PrimaryGeneratedColumn()
-    private id: number;
+    id: number;
     
     @Column()
-    private modelo: string;
+    modelo: string;
 
     @Column()
-    private año: number;
+    año: number;
 
     @Column()
-    private color: string;
+    color: string;
 
     @Column()
-    private precio: number;
+    precio: number;
 
-    constructor(id:number,modelo:string,año:number,color:string,precio:number){
+    /*constructor(id:number,modelo:string,año:number,color:string,precio:number){
         this.id = id;
         this.modelo = modelo;
         this.año = año;
         this.color = color;
         this.precio = precio;
-    }
+    }*/
 }
 

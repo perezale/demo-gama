@@ -21,7 +21,11 @@ export class BrandsService {
     create(createBrandDto:CreateBrandDto):Promise<Brand>{
         return this.brandRepor.save(createBrandDto)    
     }
-        
+    
+    remove(id: number) {
+        this.brandRepor.delete(id);
+        return 'La marca fue eliminada';
+    }
 /*
     private brands : Brand [] = [   
         {

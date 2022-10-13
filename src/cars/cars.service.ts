@@ -7,22 +7,28 @@ import { Car } from './entities/car.entity';
 
 @Injectable()
 export class CarsService {
-    
+        
     constructor(
         @InjectRepository(Car)
         private carRepor:Repository<Car>
-    ){
-         
-    }
+    ){}
 
     findAll(){
         return this.carRepor.find();
     }
 
+    /*findOne(id:number) {
+        return this.carRepor.findOne(id);
+    }*/
+
     create(createCarDto: CreateCarDto):Promise<Car> {
         return this.carRepor.save(createCarDto)
     }
 
+    remove(id: number) {
+        this.carRepor.delete(id);
+        return 'El auto fue eliminado';
+    }
     /*
     private cars : Car[] = [
         {

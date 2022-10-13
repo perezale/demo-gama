@@ -7,8 +7,8 @@ import { Car } from './entities/car.entity';
 
 @Controller('cars')
 export class CarsController {
+  constructor(private readonly carsService: CarsService){}
 
-  constructor(private readonly carsService: CarsService) {}
 
   @Get()
   findAll() {
@@ -21,6 +21,16 @@ export class CarsController {
     return newCar;
   }
   
+  /*@Get(':id')  //RECIBO TOKEN CON :
+  findOne(@Param() params){
+    return this.carsService.findOne(params.id);
+  } */
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.carsService.remove(+id);
+  }
+
   /*
   @Get()
   findAll(@Query() query: QueryCarsDto): Car[] {    //METODO

@@ -20,6 +20,12 @@ export class BrandsController {
         return newBrand;
     }
 
+    @Delete(':id')
+    remove(@Param('id') id: string) {
+        return this.brandsService.remove(+id);
+    }
+
+
     /*@Get(':id')
     findOne(@Param()params){
         return this.brandsService.findOne(params.id);
