@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Car } from "src/cars/entities/car.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Brand {
@@ -8,6 +9,10 @@ export class Brand {
 
     @Column()
     nombre: string;
+
+    @OneToMany(() => Car, 
+            (car) => car.brand) //relacion  bidireccional
+    cars: Car[];
 
     /*
     constructor(id:number,nombre:string){

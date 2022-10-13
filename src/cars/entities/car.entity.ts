@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Brand } from "src/brands/entities/brand.entity";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Car {
@@ -17,6 +18,12 @@ export class Car {
 
     @Column()
     precio: number;
+
+    @ManyToOne(() => Brand, 
+            (brand) => brand.cars)
+    @JoinColumn({ name:'brandId'})
+    brand: Brand;
+  
 
     /*constructor(id:number,modelo:string,año:number,color:string,precio:number){
         this.id = id;
