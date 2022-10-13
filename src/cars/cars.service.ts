@@ -23,6 +23,11 @@ export class CarsService {
         });
     }
 
+    async update(id: number, updateCarDto: UpdateCarDto) {
+        await this.carRepor.update({ id }, updateCarDto);
+        return await this.findOne(id);
+    }
+
     create(createCarDto: CreateCarDto):Promise<Car> {
         return this.carRepor.save(createCarDto)
     }

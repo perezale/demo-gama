@@ -15,16 +15,23 @@ export class CarsController {
     return this.carsService.findAll();
   }
 
+  @Get(':id')
+  findOne(@Param('id') id: number) {
+    return this.carsService.findOne(id);
+  }
+
+  @Put(':id')
+  update(@Param('id') id: number, @Body() updateCarDto: UpdateCarDto) {
+    return this.carsService.update(id, updateCarDto);
+  }
+
   @Post('')
   create(@Body() createCarDto:CreateCarDto): Promise<Car> {
     const newCar = this.carsService.create(createCarDto);
     return newCar;
   }
+
   
-  @Get(':id')
-  findOne(@Param('id') id: number) {
-    return this.carsService.findOne(+id);
-  }
 
   @Delete(':id')
   remove(@Param('id') id: string) {

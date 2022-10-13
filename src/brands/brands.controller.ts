@@ -15,8 +15,13 @@ export class BrandsController {
     }
 
     @Get(':id')
-    findOne(@Param('id') id: string) {
-        return this.brandsService.findOne(+id);
+    findOne(@Param('id') id: number) {
+        return this.brandsService.findOne(id);
+    }
+
+    @Put(':id')
+    update(@Param('id') id: number, @Body() updateBrandDto: UpdateBrandDto) {
+        return this.brandsService.update(id, updateBrandDto);
     }
 
     @Post('')
