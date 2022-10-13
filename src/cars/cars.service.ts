@@ -35,8 +35,12 @@ export class CarsService {
         return this.carRepor.save(createCarDto)
     }
 
-    remove(id: number) {
-        this.carRepor.delete(id);
-        return 'El auto fue eliminado';
+    async remove(id: number) {
+        const brand = await this.carRepor.findOneBy({id});
+        if (brand == null)
+            throw new HttpException('NO LLUEVE MAS!!',HttpStatus.NOT_FOUND);
+        
+        await this.carRepor.delete(id);
+        return 'Correcto, pude eliminarse';
     }
 }
