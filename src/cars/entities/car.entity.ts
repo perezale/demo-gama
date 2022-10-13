@@ -19,8 +19,7 @@ export class Car {
     @Column()
     precio: number;
 
-    @ManyToOne(() => Brand, 
-            (brand) => brand.cars)
+    @ManyToOne(() => Brand)
     @JoinColumn({ name:'brandId'})
     brand: Brand;
   
