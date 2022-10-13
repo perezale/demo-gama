@@ -15,7 +15,9 @@ export class BrandsService {
     ){}
 
     findAll(){
-        return this.brandRepor.find();
+        return this.brandRepor.find(
+            {relations:['cars'],}
+        );
     }
 
     findOne(id: number) {
@@ -33,8 +35,19 @@ export class BrandsService {
         return this.brandRepor.save(createBrandDto)    
     }
     
-    remove(id: number) {
-        this.brandRepor.delete(id);
-        return 'La marca fue eliminada';
+    handleConstrainError({ code }) {
+        if (code === '23503')
+            throw new HttpException('ERROR, no se puede eliminar',HttpStatus.CONFLICT);
+        throw new HttpException('ERdfkhajkROR',HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    async remove(id: number) {
+        const brand = this.findOne(id);
+        if (!brand)
+            throw new HttpException('NO LLUEVE MAS!!',HttpStatus.NOT_FOUND);
+        await this.brandRepor.delete(id).catch(this.handleConstrainError);
+        return 'Correcto, pude eliminarse';
+    }
+    
+    
 }

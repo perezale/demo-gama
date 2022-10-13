@@ -14,12 +14,15 @@ export class CarsService {
     ){}
 
     findAll(){
-        return this.carRepor.find();
+        return this.carRepor.find({
+            relations:['brand']
+        });
     }
 
     findOne(id: number) {
         return this.carRepor.findOne({
-            where:{id}
+            where:{id},
+            relations:['brand']
         });
     }
 
