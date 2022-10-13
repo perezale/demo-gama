@@ -24,6 +24,7 @@ export class Car {
     @JoinColumn({ name:'brandId'})
     brand: Brand;
   
+    
 
     /*constructor(id:number,modelo:string,año:number,color:string,precio:number){
         this.id = id;
