@@ -3,5 +3,5 @@ export class CreateCarDto {
     "año": number;
     "color": string;
     "precio": number;
-    "brand":number;
+    "brand_id":number;
 }

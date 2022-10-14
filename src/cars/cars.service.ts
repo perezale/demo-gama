@@ -32,7 +32,7 @@ export class CarsService {
     }
 
     create(createCarDto: CreateCarDto):Promise<Car> {
-        return this.carRepor.save(createCarDto)
+        return this.carRepor.save(createCarDto);
     }
 
     async remove(id: number) {
