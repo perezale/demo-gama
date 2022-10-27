@@ -12,13 +12,5 @@ export class Brand {
 
     @OneToMany(() => Car,(car) => car.brand) //relacion  bidireccional
     cars: Car[];
-
-    
-    /*
-    constructor(id:number,marca:string){
-        this.id = id;
-        this.marca = marca;
-    }*/
-    
 }
 
