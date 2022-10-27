@@ -15,9 +15,7 @@ export class BrandsService {
     ){}
 
     findAll(){
-        return this.brandRepor.find(
-            {relations:['cars'],}
-        );
+        return this.brandRepor.find();
     }
 
     findOne(id: number) {
