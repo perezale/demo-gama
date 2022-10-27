@@ -7,226 +7,237 @@
 	},
 	"item": [
 		{
-			"name": "Obtener autos",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:3000/cars",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"cars"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener un auto especifico",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:3000/cars/22",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"cars",
-						"22"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Agregar auto nuevo",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"modelo\":\"posdlo\",\n    \"año\":2005,\n    \"color\":\"rosjo\",\n    \"p\":1400.000\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Brand",
+			"item": [
+				{
+					"name": "List brands",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/brands/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"brands",
+								""
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:3000/cars",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"cars"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Modificar auto",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"id\": 3,\n    \"modelo\": \"polo\",\n    \"año\": 2005,\n    \"color\": \"rojo y blanco\",\n    \"precio\": 1800\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Delete brand",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/brands/12",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"brands",
+								"12"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:3000/cars/3",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"cars",
-						"3"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Eliminar auto",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "localhost:3000/cars/23",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"cars",
-						"23"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener marcas",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:3000/brands",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"brands"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener una marca especifica",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:3000/brands/2",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"brands",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Agregar una nueva marca",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"marca\":\"TOYOTA\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Update brand",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"marca\":\"FIAT\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/brands/12",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"brands",
+								"12"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:3000/brands",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"brands"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Modificar marca",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"marca\":\"FIAT\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "New brand",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"marca\":\"NISSAN\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/brands",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"brands"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:3000/brands/12",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"brands",
-						"12"
-					]
+				{
+					"name": "Show specific brand",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/brands/17",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"brands",
+								"17"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Eliminar marca",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "localhost:3000/brands/4",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"brands",
-						"4"
-					]
+			"name": "Car",
+			"item": [
+				{
+					"name": "List cars",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/cars",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete car",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/cars/26",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cars",
+								"26"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update car",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 3,\n    \"modelo\": \"yaris 2.0\",\n    \"año\": 2015,\n    \"color\": \"negro ploteado\",\n    \"precio\": 1800\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/cars/3",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cars",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New car",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"modelo\":\"YARIS 2.6\",\n    \"año\":2022,\n    \"color\":\"azul\",\n    \"precio\":2536254,\n    \"brand\":18\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/cars",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show specific car",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/cars/43",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cars",
+								"43"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }
