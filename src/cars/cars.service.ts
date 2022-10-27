@@ -38,9 +38,9 @@ export class CarsService {
     async remove(id: number) {
         const brand = await this.carRepor.findOneBy({id});
         if (brand == null)
-            throw new HttpException('NO LLUEVE MAS!!',HttpStatus.NOT_FOUND);
+            throw new HttpException('Does not exits',HttpStatus.NOT_FOUND);
         
         await this.carRepor.delete(id);
-        return 'Correcto, pude eliminarse';
+        return 'Eliminated car';
     }
 }
