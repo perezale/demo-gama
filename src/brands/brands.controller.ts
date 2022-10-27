@@ -25,8 +25,8 @@ export class BrandsController {
         return this.brandsService.update(id, updateBrandDto);
     }
 
-    @Post('')
-    create(@Body() createBrandDto:CreateBrandDto): Promise<Brand> {
+    @Post()
+    create(@Body() createBrandDto:CreateBrandDto){
         const newBrand = this.brandsService.create(createBrandDto);
         return newBrand;
     }

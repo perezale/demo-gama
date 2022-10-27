@@ -29,7 +29,7 @@ export class BrandsService {
         return await this.findOne(id);
     }
 
-    create(createBrandDto:CreateBrandDto):Promise<Brand>{
+    create(createBrandDto:CreateBrandDto){
         return this.brandRepor.save(createBrandDto)    
     }
     
