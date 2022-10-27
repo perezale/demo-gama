@@ -19,9 +19,12 @@ export class BrandsService {
     }
 
     findOne(id: number) {
-        return this.brandRepor.findOne({
+        let result = this.brandRepor.findOne({
             where:{id}
         });
+        if(result === null)
+            throw new HttpException('The brand does not exist',HttpStatus.NOT_FOUND);
+        return result;
     }
 
     async update(id: number, updateBrandDto: UpdateBrandDto) {
@@ -44,7 +47,7 @@ export class BrandsService {
         if (!brand)
             throw new HttpException('NO LLUEVE MAS!!',HttpStatus.NOT_FOUND);
         await this.brandRepor.delete(id).catch(this.handleConstrainError);
-        return 'Correcto, pude eliminarse';
+        return 'REMOVED';
     }
     
     
