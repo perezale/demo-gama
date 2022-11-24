@@ -9,10 +9,10 @@ require('dotenv').config()
 
 const db_options = {
   host: process.env.DB_HOST || 'localhost',
+  database: process.env.DB_NAME || 'my_db',
+  password: process.env.DB_PASSWORD || '123456',
   port: parseInt(process.env.DB_PORT || '5432'),
   username: process.env.DB_USER || 'carlos',
-  password: process.env.DB_PASSWORD || '123456',
-  database: process.env.DB_NAME || 'my_db',
 }
 
 console.log(db_options);
