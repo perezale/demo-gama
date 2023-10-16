@@ -5,15 +5,23 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Car } from './cars/entities/car.entity';
 import { Brand } from './brands/entities/brand.entity';
 
+require('dotenv').config()
+
+const db_options = {
+  host: process.env.DB_HOST || 'localhost',
+  port: parseInt(process.env.DB_PORT || '5432'),
+  username: process.env.DB_USER || 'carlos',
+  password: process.env.DB_PASSWORD || '123456',
+  database: process.env.DB_NAME || 'my_db',  
+}
+
+console.log(db_options);
+
 @Module({
-  imports: [
+  imports: [ 
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      database: 'my_db',
-      username: 'carlos',
-      password: '123456',      
+      ...db_options,      
       entities: [Car,Brand],
       synchronize: true,
     }),    

@@ -8,7 +8,7 @@ export class Brand {
     id: number;
 
     @Column()
-    marca: string;
+    brand: string;
 
     @OneToMany(() => Car,(car) => car.brand) //relacion  bidireccional
     cars: Car[];

@@ -1,6 +1,8 @@
 export class UpdateCarDto {
-    "modelo": string;
-    "año": number;
+    "brandname": string;
+    "model": string;
+    "year": number;
     "color": string;
-    "precio": number;
+    "price": number;
+    "image": string;
 }

@@ -8,16 +8,22 @@ export class Car {
     id: number;
     
     @Column()
-    modelo: string;
+    brandname: string;
 
     @Column()
-    año: number;
+    model: string;
+
+    @Column()
+    year: number;
 
     @Column()
     color: string;
 
     @Column()
-    precio: number;
+    price: number;
+
+    @Column()
+    image: string;
 
     @ManyToOne(() => Brand)
     @JoinColumn({ name:'brandId'})
