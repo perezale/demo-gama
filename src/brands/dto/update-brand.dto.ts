@@ -1,3 +1,3 @@
 export class UpdateBrandDto {
-    brand: string;
+    marca: string;
 }

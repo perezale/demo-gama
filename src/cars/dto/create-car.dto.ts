@@ -1,9 +1,7 @@
 export class CreateCarDto {
-    "brandname": string;
-    "model": string;
-    "year": number;
+    "modelo": string;
+    "año": number;
     "color": string;
-    "price": number;
-    "image" : string;
+    "precio": number;
     "brand_id":number;
 }

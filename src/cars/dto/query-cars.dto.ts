@@ -1,6 +1,6 @@
 export class QueryCarsDto {
 
-    model: string;
+    modelo: string;
     sortBy: string;
     orderBy: string;
 }

@@ -1,3 +1,3 @@
 export class CreateBrandDto {
-    "brand": string;
+    "marca": string;
 }
