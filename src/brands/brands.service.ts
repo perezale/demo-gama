@@ -22,13 +22,14 @@ export class BrandsService {
         return brands;
     }
 
-    findOne(id: number) {
-        let result = this.brandRepor.findOne({
+    async findOne(id: number) {
+        const brand = await this.brandRepor.findOne({
             where:{id}
         });
-        if(result === null)
-            throw new HttpException('The brand does not exist',HttpStatus.NOT_FOUND);
-        return result;
+        if(!brand){
+            throw new NotFoundException('Dicha marca no existe','NOT BRAND');
+        }
+        return brand;
     }
 
     async update(id: number, updateBrandDto: UpdateBrandDto) {
