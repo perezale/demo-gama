@@ -6,6 +6,7 @@ import { UpdateBrandDto } from './dto/update-brand.dto';
 import { Brand } from './entities/brand.entity';
 import { NotFoundError } from 'rxjs';
 import { error } from 'console';
+import { promises } from 'dns';
 
 @Injectable()
 export class BrandsService {
@@ -16,8 +17,9 @@ export class BrandsService {
         private brandRepor:Repository<Brand>
     ){}
 
-    findAll(){
-        return this.brandRepor.find();
+    async findAll():Promise<Brand[]>{
+        const brands = await this.brandRepor.find();
+        return brands;
     }
 
     findOne(id: number) {
