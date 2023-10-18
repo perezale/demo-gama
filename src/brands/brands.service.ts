@@ -1,9 +1,11 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateBrandDto } from './dto/create-brand.dto';
 import { UpdateBrandDto } from './dto/update-brand.dto';
 import { Brand } from './entities/brand.entity';
+import { NotFoundError } from 'rxjs';
+import { error } from 'console';
 
 @Injectable()
 export class BrandsService {
@@ -43,12 +45,16 @@ export class BrandsService {
     }
 
     async remove(id: number) {
-        const brand = this.findOne(id);
-        if (!brand)
-            throw new HttpException('NO LLUEVE MAS!!',HttpStatus.NOT_FOUND);
-        await this.brandRepor.delete(id).catch(this.handleConstrainError);
-        return 'REMOVED';
-    }
-    
-    
+        const brand = await this.findOne(id);
+        if (!brand){
+            throw new NotFoundException('La marca no existe','NOT TRADEMARK');
+        }
+        try{
+            await this.brandRepor.delete(id);
+            return 'MARCA ELIMINADA';
+        }catch (error){
+            this.handleConstrainError(error);
+            throw new InternalServerErrorException('No se puede eliminar MARCA','DELETE ERROR');
+        }
+    }    
 }
