@@ -52,11 +52,8 @@ export class CarsService {
     }
 
     async remove(id: number) {
-        const brand = await this.carRepor.findOneBy({id});
-        if (brand == null)
-            throw new HttpException('Does not exits',HttpStatus.NOT_FOUND);
-        
+        const brand = await this.findOne(id);
         await this.carRepor.delete(id);
-        return 'Eliminated car';
+        return 'Auto ELIMINADO';
     }
 }
