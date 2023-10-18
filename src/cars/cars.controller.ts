@@ -4,6 +4,7 @@ import { CreateCarDto } from './dto/create-car.dto';
 import { QueryCarsDto } from './dto/query-cars.dto';
 import { UpdateCarDto } from './dto/update-car.dto';
 import { Car } from './entities/car.entity';
+import { query } from 'express';
 
 @Controller('cars')
 export class CarsController {
@@ -11,11 +12,20 @@ export class CarsController {
   constructor(
     private readonly carsService: CarsService){}
 
-
+  
   @Get()
+  async findAll(@Query('model') model: string): Promise<Car[]> {
+    if (model){
+      return this.carsService.findAllByModel(model);
+    }else{
+      return this.carsService.findAll();
+    }    
+  }
+
+  /*@Get()
   findAll() {
     return this.carsService.findAll();
-  }
+  }*/
 
   @Get(':id')
   findOne(@Param('id') id: number) {

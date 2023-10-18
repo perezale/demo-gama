@@ -13,10 +13,18 @@ export class CarsService {
         private carRepor:Repository<Car>
     ){}
 
-    findAll(){
-        return this.carRepor.find({
+    async findAllByModel(model: string){
+        const carsModel = await this.carRepor.find({
+            where:{model}
+        });
+        return carsModel;       
+    }
+        
+    async findAll(){
+        const cars = await this.carRepor.find({
             relations:['brand']
         });
+        return cars;
     }
 
     findOne(id: number) {
