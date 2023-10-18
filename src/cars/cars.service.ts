@@ -46,8 +46,9 @@ export class CarsService {
         return updateCar;
     }
 
-    create(createCarDto: CreateCarDto):Promise<Car> {
-        return this.carRepor.save(createCarDto);
+    async create(createCarDto: CreateCarDto):Promise<Car> {
+        const newCar = await this.carRepor.save(createCarDto);
+        return newCar;
     }
 
     async remove(id: number) {
