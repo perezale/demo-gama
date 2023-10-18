@@ -27,8 +27,10 @@ export class BrandsController {
 
     @Post()
     create(@Body() createBrandDto:CreateBrandDto){
+        return this.brandsService.create(createBrandDto);
+        /*
         const newBrand = this.brandsService.create(createBrandDto);
-        return newBrand;
+        return newBrand;*/
     }
 
     @Delete(':id')

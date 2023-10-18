@@ -10,24 +10,24 @@ import { promises } from 'dns';
 
 @Injectable()
 export class BrandsService {
-    
+
 
     constructor(
         @InjectRepository(Brand)
-        private brandRepor:Repository<Brand>
-    ){}
+        private brandRepor: Repository<Brand>
+    ) { }
 
-    async findAll():Promise<Brand[]>{
+    async findAll(): Promise<Brand[]> {
         const brands = await this.brandRepor.find();
         return brands;
     }
 
     async findOne(id: number) {
         const brand = await this.brandRepor.findOne({
-            where:{id}
+            where: { id }
         });
-        if(!brand){
-            throw new NotFoundException('Dicha marca no existe','NOT BRAND');
+        if (!brand) {
+            throw new NotFoundException('Dicha marca no existe', 'NOT BRAND');
         }
         return brand;
     }
@@ -37,27 +37,35 @@ export class BrandsService {
         return await this.findOne(id);
     }
 
-    create(createBrandDto:CreateBrandDto){
-        return this.brandRepor.save(createBrandDto)    
+    async create(createBrandDto: CreateBrandDto) {
+        try {
+            const newBrand = this.brandRepor.save(createBrandDto);
+            return newBrand;
+        } catch (error) {
+            throw new InternalServerErrorException('Error al crear la nueva marca', 'CREATE ERROR');
+        }
+        /*
+        return this.brandRepor.save(createBrandDto)
+        */
     }
-    
+
     handleConstrainError({ code }) {
         if (code === '23503')
-            throw new HttpException('ERROR, no se puede eliminar',HttpStatus.CONFLICT);
-        throw new HttpException('ERdfkhajkROR',HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new HttpException('ERROR, no se puede eliminar', HttpStatus.CONFLICT);
+        throw new HttpException('ERdfkhajkROR', HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     async remove(id: number) {
         const brand = await this.findOne(id);
-        if (!brand){
-            throw new NotFoundException('La marca no existe','NOT TRADEMARK');
+        if (!brand) {
+            throw new NotFoundException('La marca no existe', 'NOT TRADEMARK');
         }
-        try{
+        try {
             await this.brandRepor.delete(id);
             return 'MARCA ELIMINADA';
-        }catch (error){
+        } catch (error) {
             this.handleConstrainError(error);
-            throw new InternalServerErrorException('No se puede eliminar MARCA','DELETE ERROR');
+            throw new InternalServerErrorException('No se puede eliminar MARCA', 'DELETE ERROR');
         }
-    }    
+    }
 }
