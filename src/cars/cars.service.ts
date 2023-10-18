@@ -1,9 +1,10 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateCarDto } from './dto/create-car.dto';
 import { UpdateCarDto } from './dto/update-car.dto';
 import { Car } from './entities/car.entity';
+import { NotFoundError } from 'rxjs';
 
 @Injectable()
 export class CarsService {
@@ -27,11 +28,15 @@ export class CarsService {
         return cars;
     }
 
-    findOne(id: number) {
-        return this.carRepor.findOne({
+    async findOne(id: number) {
+        const car = await this.carRepor.findOne({
             where:{id},
             relations:['brand']
         });
+        if(!car){
+            throw new NotFoundException('El auto no existe','NOT EXIST');
+        }
+        return car;
     }
 
     async update(id: number, updateCarDto: UpdateCarDto) {
