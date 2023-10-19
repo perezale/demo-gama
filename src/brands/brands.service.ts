@@ -27,7 +27,7 @@ export class BrandsService {
             where: { id }
         });
         if (!brand) {
-            throw new NotFoundException('Dicha marca no existe', 'NOT BRAND');
+            throw new NotFoundException('No existe la marca', 'NOT BRAND');
         }
         return brand;
     }
@@ -58,9 +58,6 @@ export class BrandsService {
 
     async remove(id: number) {
         const brand = await this.findOne(id);
-        if (!brand) {
-            throw new NotFoundException('La marca no existe', 'NOT TRADEMARK');
-        }
         try {
             await this.brandRepor.delete(id);
             return 'MARCA ELIMINADA';
