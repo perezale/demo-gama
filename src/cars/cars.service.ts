@@ -15,6 +15,12 @@ export class CarsService {
     ){}
 
     async findAllByModel(model: string){
+        const modeloExiste = await this.carRepor.findOne({
+            where:{model}
+        });
+        if(!modeloExiste){
+            throw new NotFoundException('No tenemos auto de esa marca','NOT EXIST');
+        }
         const carsModel = await this.carRepor.find({
             where:{model}
         });
