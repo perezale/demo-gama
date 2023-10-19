@@ -50,9 +50,10 @@ export class BrandsService {
     }
 
     handleConstrainError({ code }) {
-        if (code === '23503')
-            throw new HttpException('ERROR, no se puede eliminar', HttpStatus.CONFLICT);
-        throw new HttpException('ERdfkhajkROR', HttpStatus.INTERNAL_SERVER_ERROR);
+        if (code === '23503'){
+            const errorMsg = 'No se puede borrar se encuentra en uso';
+            throw new HttpException(errorMsg, HttpStatus.CONFLICT);
+        }
     }
 
     async remove(id: number) {
@@ -65,7 +66,6 @@ export class BrandsService {
             return 'MARCA ELIMINADA';
         } catch (error) {
             this.handleConstrainError(error);
-            throw new InternalServerErrorException('No se puede eliminar MARCA', 'DELETE ERROR');
         }
     }
 }
