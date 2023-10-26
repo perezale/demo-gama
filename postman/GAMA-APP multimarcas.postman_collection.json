@@ -34,14 +34,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/brands/12",
+							"raw": "localhost:3000/brands/15",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"brands",
-								"12"
+								"15"
 							]
 						}
 					},
@@ -54,7 +54,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"marca\":\"FIAT\"\n}",
+							"raw": "{\n    \"trademark\":\"CHEVROLET\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -62,14 +62,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/brands/12",
+							"raw": "localhost:3000/brands/4",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"brands",
-								"12"
+								"4"
 							]
 						}
 					},
@@ -82,7 +82,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"marca\":\"NISSAN\"\n}",
+							"raw": "{\n    \"trademark\":\"VOLKSWAGEN\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -108,14 +108,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/brands/17",
+							"raw": "localhost:3000/brands/7",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"brands",
-								"17"
+								"7"
 							]
 						}
 					},
@@ -170,7 +170,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 3,\n    \"modelo\": \"yaris 2.0\",\n    \"año\": 2015,\n    \"color\": \"negro ploteado\",\n    \"precio\": 1800\n}",
+							"raw": "{\n    \"model\": \"fiestaa\",\n    \"year\": 22822,\n    \"color\": \"green\",\n    \"price\": 1800,\n    \"brand\":1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -178,14 +178,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/cars/3",
+							"raw": "localhost:3000/cars/2",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"cars",
-								"3"
+								"2"
 							]
 						}
 					},
@@ -198,7 +198,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"modelo\":\"YARIS 2.6\",\n    \"año\":2022,\n    \"color\":\"azul\",\n    \"precio\":2536254,\n    \"brand\":18\n}",
+							"raw": "{\n    \"model\":\"amarok\",\n    \"year\":2022,\n    \"color\":\"negro\",\n    \"price\":9500000,\n    \"brand\":31\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -224,14 +224,47 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/cars/43",
+							"raw": "localhost:3000/cars/2",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"cars",
-								"43"
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListForModel",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/cars?year=2020&color=verde&model=ka",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cars"
+							],
+							"query": [
+								{
+									"key": "year",
+									"value": "2020"
+								},
+								{
+									"key": "color",
+									"value": "verde"
+								},
+								{
+									"key": "model",
+									"value": "ka"
+								}
 							]
 						}
 					},
