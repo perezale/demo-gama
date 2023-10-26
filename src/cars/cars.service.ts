@@ -14,15 +14,39 @@ export class CarsService {
         private carRepor:Repository<Car>
     ){}
 
-    async findAllByModel(model: string){
+    async findAllByModel(model: string, year?: number, color?: string):Promise<Car[]>{
+        const whereCondition: any = {model};
+        if(year !== undefined){
+            whereCondition.year = year;
+        }
+        if(color !== undefined){
+            whereCondition.color = color;
+        }
         const modeloExiste = await this.carRepor.findOne({
-            where:{model}
+            where: whereCondition
         });
         if(!modeloExiste){
             throw new NotFoundException('No tenemos auto de esa marca','NOT EXIST');
         }
         const carsModel = await this.carRepor.find({
-            where:{model}
+            where:whereCondition
+        });
+        return carsModel;       
+    }
+
+    async findAllByModelAndColor(model: string, color?: string):Promise<Car[]>{
+        const whereCondition: any = {model};
+        if(color !== undefined){
+            whereCondition.color = color;
+        }
+        const modeloExiste = await this.carRepor.findOne({
+            where: whereCondition
+        });
+        if(!modeloExiste){
+            throw new NotFoundException('No tenemos auto de esa marca','NOT EXIST');
+        }
+        const carsModel = await this.carRepor.find({
+            where:whereCondition
         });
         return carsModel;       
     }

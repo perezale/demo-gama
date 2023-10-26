@@ -13,12 +13,23 @@ export class CarsController {
     private readonly carsService: CarsService){}
   
   @Get()
-  async findAll(@Query('model') model: string): Promise<Car[]> {
-    if (model){
-      return this.carsService.findAllByModel(model);
-    }else{
+  async findAll(
+    @Query('model') model: string,
+    @Query('year') year?: number,
+    @Query('color') color?: string){
+    if (model) {
+      if (year && color) {
+        return this.carsService.findAllByModel(model, year, color);
+      } else if (year) {
+        return this.carsService.findAllByModel(model, year);
+      } else if (color) {
+        return this.carsService.findAllByModelAndColor(model, color);
+      } else {
+        return this.carsService.findAllByModel(model);
+      }
+    } else {
       return this.carsService.findAll();
-    }    
+    }
   }
 
   @Get(':id')
