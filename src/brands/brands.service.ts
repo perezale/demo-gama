@@ -11,7 +11,6 @@ import { promises } from 'dns';
 @Injectable()
 export class BrandsService {
 
-
     constructor(
         @InjectRepository(Brand)
         private brandRepor: Repository<Brand>
@@ -44,9 +43,6 @@ export class BrandsService {
         } catch (error) {
             throw new InternalServerErrorException('Error al crear la nueva marca', 'CREATE ERROR');
         }
-        /*
-        return this.brandRepor.save(createBrandDto)
-        */
     }
 
     handleConstrainError({ code }) {

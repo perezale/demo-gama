@@ -11,7 +11,6 @@ export class CarsController {
   
   constructor(
     private readonly carsService: CarsService){}
-
   
   @Get()
   async findAll(@Query('model') model: string): Promise<Car[]> {
@@ -21,11 +20,6 @@ export class CarsController {
       return this.carsService.findAll();
     }    
   }
-
-  /*@Get()
-  findAll() {
-    return this.carsService.findAll();
-  }*/
 
   @Get(':id')
   findOne(@Param('id') id: number) {
