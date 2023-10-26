@@ -46,9 +46,8 @@ export class CarsService {
     }
 
     async update(id: number, updateCarDto: UpdateCarDto) {
-        const existeCar = await this.findOne(id);
-        await this.carRepor.update({ id }, updateCarDto);
         const updateCar = await this.findOne(id);
+        await this.carRepor.update({ id }, updateCarDto);
         return updateCar;
     }
 

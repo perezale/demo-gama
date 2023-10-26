@@ -32,8 +32,9 @@ export class BrandsService {
     }
 
     async update(id: number, updateBrandDto: UpdateBrandDto) {
+        const updateBrand = await this.findOne(id);
         await this.brandRepor.update({ id }, updateBrandDto);
-        return await this.findOne(id);
+        return updateBrand; 
     }
 
     async create(createBrandDto: CreateBrandDto) {
