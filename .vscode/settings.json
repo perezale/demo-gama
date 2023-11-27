@@ -1,7 +1,5 @@
 {
-<<<<<<< HEAD
 
-=======
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#fa1b49",
         "activityBar.background": "#fa1b49",
@@ -21,6 +19,20 @@
         "titleBar.inactiveBackground": "#dd053199",
         "titleBar.inactiveForeground": "#e7e7e799"
     },
-    "peacock.color": "#dd0531"
->>>>>>> 05dff2a94f19661a9b69fd7c860fd3427f58dc46
+    "peacock.color": "#dd0531",
+    "sqltools.connections": [
+        {
+            "pgOptions": {
+                "ssl": {
+                    "requestCert": true
+                }
+            },
+            "previewLimit": 50,
+            "server": "dpg-clb8sb6nt67s73acg8ig-a.oregon-postgres.render.com",
+            "driver": "PostgreSQL",
+            "name": "render",
+            "connectString": "postgres://carlos:AXfPFLFlWv8tG8NkKbHvfWpERqzDOify@dpg-clb8sb6nt67s73acg8ig-a.oregon-postgres.render.com/my_db_f9kn"
+        }
+    ]
+
 }
