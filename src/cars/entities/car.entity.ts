@@ -21,6 +21,6 @@ export class Car {
 
     @ManyToOne(() => Brand)
     @JoinColumn({ name:'brandId'})
-    brand: Brand;
+    brand: number | Brand;
 }
 

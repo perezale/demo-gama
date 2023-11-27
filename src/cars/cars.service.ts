@@ -77,7 +77,7 @@ export class CarsService {
 
     async create(createCarDto: CreateCarDto):Promise<Car> {
         const newCar = await this.carRepor.save(createCarDto);
-        return newCar;
+        return await this.findOne(newCar.id);
     }
 
     async remove(id: number) {

@@ -3,5 +3,6 @@ export class CreateCarDto {
     "year": number;
     "color": string;
     "price": number;
-    "brand_id":number;
+   
+    "brand":number;
 }
